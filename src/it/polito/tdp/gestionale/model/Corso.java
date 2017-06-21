@@ -3,13 +3,52 @@ package it.polito.tdp.gestionale.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Corso {
+public class Corso extends Nodo implements Comparable<Corso>{
 
 	private List<Studente> studenti;
 	private String codins;
 	private String nome;
 	private int crediti;
 	private int pd;
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codins == null) ? 0 : codins.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return nome+" "+this.codins;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Corso other = (Corso) obj;
+		if (codins == null) {
+			if (other.codins != null)
+				return false;
+		} else if (!codins.equals(other.codins))
+			return false;
+		return true;
+	}
 
 	public Corso() {
 
@@ -74,5 +113,10 @@ public class Corso {
 
 	public void setStudenti(List<Studente> studenti) {
 		this.studenti = studenti;
+	}
+
+	@Override
+	public int compareTo(Corso altro) {
+		return this.getCodins().compareTo(altro.getCodins());
 	}
 }
