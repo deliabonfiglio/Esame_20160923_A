@@ -78,7 +78,7 @@ public class Model {
 			int numCorsi= Graphs.neighborListOf(graph,s).size();
 			int counter = statCorsi.get(numCorsi);
 			counter ++;
-			statCorsi.set(numCorsi, counter);
+			statCorsi.set(numCorsi, counter);//all'indice numCorsi piazza il valore di counter
 		}
 		return statCorsi;
 		
